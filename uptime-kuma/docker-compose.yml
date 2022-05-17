@@ -1,0 +1,22 @@
+---
+version: "3.3"
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      #- /root/docker_data/uptime-kuma/data:/app/data
+      - uptime-kuma:/app/data
+ #   ports:
+ #     - 3001:3001
+    restart: unless-stopped
+    networks:
+      - frontend
+
+volumes:
+  uptime-kuma:
+
+networks:
+  frontend:
+    external: true
