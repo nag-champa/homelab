@@ -1,0 +1,24 @@
+---
+
+services:
+  smokeping:
+    image: lscr.io/linuxserver/smokeping:latest
+    container_name: smokeping
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ='America/New_York'
+    volumes:
+      - /opt/docker_data/smokeping/config:/config
+      - /opt/docker_data/smokeping/data:/data
+# uncomment to expose port 80.... unless using a reverse proxy server
+#    ports:
+#      - 80:80
+    networks:
+      - frontend
+    restart: unless-stopped
+
+networks:
+  frontend:
+    external: true
+      
