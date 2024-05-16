@@ -1,0 +1,5 @@
+# Run bootstrap ansible playbook with key vault
+ansible-playbook --vault-password-file ~/code/private/ansible_vault_key bootstrap.yml
+
+# Make password hash
+ansible all -i localhost, -m debug -a "msg={{ 'your_password' | password_hash('sha512', 'A512') }}"
