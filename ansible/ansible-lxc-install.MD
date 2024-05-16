@@ -25,9 +25,9 @@ pipx install --include-deps ansible
 # Prep ansible user environment
 pipx ensurepath #set ansible path
 ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible_key #create ssh keys
-mkdir /home/ansible/homelab #make directory for ansible codde
+git clone https://github.com/nag-champa/homelab.git  #Git clone homelab code repo
 
-#Git clone homelab code repo
+
 
 
 ## Reference
