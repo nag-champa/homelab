@@ -28,8 +28,8 @@ ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible_key #create ssh keys
 mkdir /home/ansible/homelab #make directory for ansible codde
 
 
-### Reference
-# Run to Upgrade ansible
+## Reference
+## Run to Upgrade ansible
 pipx upgrade --include-injected ansible
 
 # Install ansible collection for remote key - https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html#examples
