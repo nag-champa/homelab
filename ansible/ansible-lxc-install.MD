@@ -17,15 +17,17 @@ sudo usermod -aG sudo ansible
 ## Login as ansible user ###
 
 # Install applications
-apt install git pipx sshpass curl -y
+sudo apt install git pipx sshpass curl -y
 
 # Install ansible
-sudo pipx install --include-deps ansible
+pipx install --include-deps ansible
 
 # Prep ansible user environment
 pipx ensurepath #set ansible path
 ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible_key #create ssh keys
 mkdir /home/ansible/homelab #make directory for ansible codde
+
+#Git clone homelab code repo
 
 
 ## Reference
