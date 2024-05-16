@@ -1,0 +1,22 @@
+---
+
+# update app cache and upgrade all packages to latest
+
+- name: Update app cache.
+  package: update_cache=yes
+  changed_when: false
+
+- name: Upgrade all packages to the latest version.
+  package:
+    name: "*"
+    state: latest  
+
+- name: remove useless packages from the cache (debian, etc)
+  apt:
+    autoclean: yes
+  when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
+
+- name: remove dependencies that are no longer required (debian, etc)
+  apt:
+    autoremove: yes
+  when: ansible_distribution in ["Debian", "Ubuntu", "Pop!_OS"]
