@@ -1,5 +1,12 @@
 ## Install ansible in LXC container ##
 
+## Steps to install
+1. Update System
+2. Create ansible user
+3. Install apps
+4. Install ansible
+5. Prep ansible user environment
+
 # Update System
 sudo apt update ; apt upgrade -y
 
@@ -8,24 +15,25 @@ sudo adduser ansible
 sudo usermod -aG sudo ansible
 
 ## Login as ansible user ###
+
 # Install applications
-apt install git pipx sshpass curl
+apt install git pipx sshpass curl -y
 
 # Install ansible
 sudo pipx install --include-deps ansible
-pipx ensurepath
 
+# Prep ansible user environment
+pipx ensurepath #set ansible path
+ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible_key #create ssh keys
+mkdir /home/ansible/homelab #make directory for ansible codde
+
+
+### Reference
 # Run to Upgrade ansible
 pipx upgrade --include-injected ansible
 
 # Install ansible collection for remote key - https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html#examples
 ansible-galaxy collection install ansible.posix
-
-# Make homelab dir
-mkdir /home/ansible/homelab
-
-# Generate ansible_key ssh key
-ssh-keygen -t ed25519
 
 # Copies ssh key to remote host (covered in bootstrap playbook)
 ssh-copy-id -i /home/ansible/.ssh/ansible_key user@host
