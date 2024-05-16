@@ -7,18 +7,15 @@ sudo apt update ; apt upgrade -y
 sudo adduser ansible
 sudo usermod -aG sudo ansible
 
-### Login as ansible user ###
-# Install python installer
-sudo apt install pipx
-sudo apt install sshpass
+## Login as ansible user ###
+# Install applications
+apt install git pipx sshpass curl
 
 # Install ansible
 sudo pipx install --include-deps ansible
-
-# Set environment path
 pipx ensurepath
 
-# Upgrade ansible
+# Run to Upgrade ansible
 pipx upgrade --include-injected ansible
 
 # Install ansible collection for remote key - https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html#examples
@@ -29,6 +26,8 @@ mkdir /home/ansible/homelab
 
 # Generate ansible_key ssh key
 ssh-keygen -t ed25519
+
+# Copies ssh key to remote host (covered in bootstrap playbook)
 ssh-copy-id -i /home/ansible/.ssh/ansible_key user@host
 
 # variable in ansible playbook
