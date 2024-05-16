@@ -1,0 +1,25 @@
+---
+
+- name: base configuration for all hosts
+  hosts: homelab
+  become: true
+
+  vars:
+    ansible_user: ansible
+    ansible_ssh_private_key_file: "/home/ansible/.ssh/ansible_key"
+
+  tasks:
+    - include_tasks: tasks/update_packages.yml
+ #   - include_tasks: tasks/base_config.yml
+ #   - include_tasks: tasks/user_accounts.yml
+ #   - include_role: name=install_packages
+
+#- name: configure workstations
+#  hosts: workstation
+#  become: true
+
+#  vars:
+#    ansible_user: scott
+
+#  tasks:
+#    - include_tasks: tasks/workstation.yml
