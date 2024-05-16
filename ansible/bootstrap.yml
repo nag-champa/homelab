@@ -1,0 +1,32 @@
+---
+
+- name: bootstrap new server
+  hosts: new
+  become: true
+  gather_facts: false
+
+  vars:
+    ansible_user: root
+
+  vars_files:
+#    - vars/secrets
+
+  tasks:
+    - name: create ansible user account
+      user:
+        name: ansible
+        create_home: true
+        groups: "sudo"
+        comment: 'ansible account'
+        expires: -1
+        shell: "/bin/bash"
+        password: "$6$A512$Zi5S8S2pF2BySzMeCtbJs4icibB5EoEuR5DvJrfy/vPbj2zHqOT8j9OeKG8g3cQcMH.syevV0/pDFeTcgu7Ak0"
+
+    - name: push ssh key to deploy user
+      ansible.posix.authorized_key:
+        user: ansible
+        state: present
+        manage_dir: true
+        key: "{{ lookup('file', '/home/ansible/.ssh/ansible_key.pub') }}"
+
+#- import_playbook: site-test.yml
