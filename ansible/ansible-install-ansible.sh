@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Run this script as ansible user
+
 # Install ansible
 pipx install --include-deps ansible
 
