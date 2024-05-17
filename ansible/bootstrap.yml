@@ -9,18 +9,18 @@
     ansible_user: root
 
   vars_files:
-#    - vars/secrets
+    - vars/vault.yml
 
   tasks:
     - name: create ansible user account
       user:
-        name: ansible
+        name: "{{ansible_deploy_user}}"
         create_home: true
         groups: "sudo"
         comment: 'ansible account'
         expires: -1
         shell: "/bin/bash"
-        password: "$6$A512$Zi5S8S2pF2BySzMeCtbJs4icibB5EoEuR5DvJrfy/vPbj2zHqOT8j9OeKG8g3cQcMH.syevV0/pDFeTcgu7Ak0"
+        password: "{{ansible_user_passwd}}"
 
     - name: push ssh key to deploy user
       ansible.posix.authorized_key:

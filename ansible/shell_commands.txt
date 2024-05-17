@@ -3,3 +3,6 @@ ansible-playbook --vault-password-file ~/code/private/ansible_vault_key bootstra
 
 # Make password hash
 ansible all -i localhost, -m debug -a "msg={{ 'your_password' | password_hash('sha512', 'A512') }}"
+
+mkpasswd -m sha512crypt
+
