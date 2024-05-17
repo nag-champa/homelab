@@ -3,6 +3,7 @@
 - name: base configuration for all hosts
   hosts: homelab
   become: true
+#  gather_facts: False
 
   vars:
     ansible_user: ansible

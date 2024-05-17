@@ -27,8 +27,6 @@ pipx ensurepath #set ansible path
 ssh-keygen -t ed25519 -f /home/ansible/.ssh/ansible_key #create ssh keys
 git clone https://github.com/nag-champa/homelab.git  #Git clone homelab code repo
 
-## SSH disabled for root login
-PermitRootLogin Yes
 
 
 
