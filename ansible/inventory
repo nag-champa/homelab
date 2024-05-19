@@ -1,26 +1,12 @@
 [homelab]
 localhost  ansible_connection=local
-192.168.50.166
-192.168.50.167
+ansible2.lan
+ansible3.lan
 
 [new]
-192.168.50.166
-192.168.50.167
+ansible2.lan
+ansible3.lan
 
-[centos]
+[docker_hosts]
+ansible2.lan
 
-[ubuntu]
-#157.230.232.155
-
-[new:children]
-centos
-ubuntu
-
-[new:vars]
-#ansible_user = ansybull
-
-[samba_server]
-157.230.232.155
-
-[workstation]
-localhost

@@ -3,7 +3,6 @@
 - name: base configuration for all hosts
   hosts: homelab
   become: true
-#  gather_facts: False
 
   vars:
     ansible_user: ansible
@@ -15,12 +14,12 @@
  #   - include_tasks: tasks/user_accounts.yml
  #   - include_role: name=install_packages
 
-#- name: configure workstations
-#  hosts: workstation
-#  become: true
+- name: configure docker hosts
+  hosts: docker_hosts
+  become: true
 
-#  vars:
-#    ansible_user: scott
+  vars:
+    ansible_user: ansible
 
-#  tasks:
-#    - include_tasks: tasks/workstation.yml
+  tasks:
+    - include_tasks: tasks/install_docker.yaml
