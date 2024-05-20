@@ -6,3 +6,7 @@ ansible all -i localhost, -m debug -a "msg={{ 'your_password' | password_hash('s
 
 mkpasswd -m sha512crypt
 
+# ansible locale settings
+locale -a
+export LC_ALL=C.UTF-8
+#reference - https://fabianlee.org/2023/08/21/ansible-resolving-could-not-initialize-the-preferred-locale-unsupported-locale-setting/
