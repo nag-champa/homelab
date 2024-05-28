@@ -14,4 +14,4 @@ git clone https://github.com/nag-champa/homelab.git  #Git clone homelab code rep
 /home/ansible/.ansible_vault_passwd
 
 # Authenticate to github
-#gh auth login
+gh auth login
