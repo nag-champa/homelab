@@ -1,12 +1,13 @@
 [homelab]
 localhost  ansible_connection=local
-ansible2.lan
-ansible3.lan
+ansible-slave.lan
+
+[ansible]
+localhost ansible_connection=localhost
 
 [new]
-ansible2.lan
-ansible3.lan
+ansible-slave.lan
+localhost ansible_connection=local
 
 [docker_hosts]
-ansible2.lan
 
