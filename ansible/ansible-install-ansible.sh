@@ -12,3 +12,5 @@ git clone https://github.com/nag-champa/homelab.git  #Git clone homelab code rep
 
 # Authenticate to github
 #gh auth login
+git config --global user.name "Scott Siegel"
+git config --global user.email scottsigl@gmail.com
