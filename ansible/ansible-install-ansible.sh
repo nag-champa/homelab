@@ -11,7 +11,7 @@ ssh-keygen -t ed25519 -N '' -f /home/ansible/.ssh/ansible_key #create ssh keys
 git clone https://github.com/nag-champa/homelab.git  #Git clone homelab code repo
 
 # Create ansible vault password file
-touch /home/ansible/.ansible_vault_passwd
+touch /home/ansible/.ansible_vault_password
 read -sp 'Enter Ansible Vault password ' password
 echo $password >> /home/ansible/.ansible_vault_password
 
