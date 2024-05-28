@@ -12,7 +12,7 @@ git clone https://github.com/nag-champa/homelab.git  #Git clone homelab code rep
 
 # Create ansible vault password file
 touch /home/ansible/.ansible_vault_passwd
-read -p 'Enter Ansible Vault password ' password
+read -sp 'Enter Ansible Vault password ' password
 echo $password >> /home/ansible/.ansible_vault_password
 
 # Authenticate to github
