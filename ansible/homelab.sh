@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ansible-playbook -K homelab.yml
+ansible-playbook homelab.yml
 

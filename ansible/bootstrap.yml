@@ -1,7 +1,7 @@
 ---
 
 - name: bootstrap new server
-  hosts: new
+  hosts: all
   become: true
   gather_facts: false
 
@@ -24,9 +24,16 @@
 
     - name: push ssh key to deploy user
       ansible.posix.authorized_key:
-        user: ansible
+        user: "{{ansible_deploy_user}}"
         state: present
         manage_dir: true
         key: "{{ lookup('file', '/home/ansible/.ssh/ansible_key.pub') }}"
 
-#- import_playbook: site-test.yml
+    - name: set up passwordless sudo for deploy user
+      ansible.builtin.copy:
+        dest: /etc/sudoers.d/ansible
+        owner: root
+        mode: 0440
+        content: 'ansible ALL=(ALL)  NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %s
+

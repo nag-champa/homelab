@@ -1,13 +1,18 @@
 [homelab]
-localhost  ansible_connection=local
-ansible-slave.lan
+localhost  #ansible_connection=local
+tailscale.lan
+pihole.lan
+unifi.lan
+docker.lan
+docker2.lan 
+#lxc-ubuntu-1 ansible_host=10.2.2.6 #lxc ubuntu checkpoint lab
+docker-test.lan
 
 [ansible]
-localhost ansible_connection=localhost
+localhost #ansible_connection=localhost
 
 [new]
-ansible-slave.lan
-localhost ansible_connection=local
+
 
 [docker_hosts]
-
+docker-test.lan
